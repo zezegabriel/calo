@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Calo",
+    "slug": "calo",
+    "scheme": "calo",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/marca/icone-app.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "br.calo.app"
+    },
+    "android": {
+      "package": "br.calo.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/marca/icone-app.png",
+        "backgroundColor": "#1E2638"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-audio",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/marca/icone-arredondado.png",
+          "imageWidth": 180,
+          "backgroundColor": "#1E2638"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": false
+    }
+  }
+}
