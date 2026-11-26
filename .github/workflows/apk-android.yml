@@ -43,7 +43,7 @@ jobs:
 
       - name: Compilar APK
         working-directory: android
-        run: ./gradlew assembleRelease --no-daemon
+        run: ./gradlew assembleRelease --no-daemon -PreactNativeArchitectures=arm64-v8a
 
       - name: Renomear
         run: cp android/app/build/outputs/apk/release/app-release.apk Calo-${{ github.ref_name == 'main' && 'teste' || github.ref_name }}.apk
