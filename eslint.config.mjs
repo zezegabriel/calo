@@ -120,7 +120,21 @@ export default defineConfig([
       "@typescript-eslint/no-require-imports": "off",
     },
   },
+  {
+    // Janela do Windows (Electron), roda em Node.
+    files: ["desktop/**/*.cjs"],
+    languageOptions: {
+      sourceType: "commonjs",
+      globals: { require: "readonly", __dirname: "readonly", process: "readonly", URL: "readonly" },
+    },
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+    },
+  },
   globalIgnores([
+    "desktop/node_modules/**",
+    "desktop/dist/**",
+    "desktop/web/**",
     ".claude/**",
     ".expo/**",
     "node_modules/**",

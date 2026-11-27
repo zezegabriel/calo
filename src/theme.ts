@@ -24,3 +24,6 @@ export const fonte = {
 export const raio = 8;
 
 export const espaco = { p: 8, m: 16, g: 24 };
+
+/** Conteúdo das telas: no celular ocupa tudo, no computador fica numa coluna legível. */
+export const pagina = { padding: 16, paddingBottom: 40, width: "100%", maxWidth: 760, alignSelf: "center" } as const;

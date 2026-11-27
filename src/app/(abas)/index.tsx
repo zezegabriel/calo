@@ -3,7 +3,7 @@ import { router } from "expo-router";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import { aulas, aulasDoModulo, modulos } from "../../content/aulas";
 import { useProgresso } from "../../store/progresso";
-import { cor, fonte, raio } from "../../theme";
+import { cor, fonte, raio, pagina } from "../../theme";
 
 export default function ListaDeAulas() {
   const { perfil, aulaFeita, totalFeitas } = useProgresso();
@@ -11,7 +11,7 @@ export default function ListaDeAulas() {
   const proxima = aulas.find((a) => !aulaFeita(a.id));
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 40 }}>
+    <ScrollView contentContainerStyle={pagina}>
       <View style={{ backgroundColor: professor ? cor.professor : cor.azulNoite, borderRadius: raio, padding: 18 }}>
         <Text style={{ fontFamily: fonte.textoForte, fontSize: 13, color: "#C9D3E0" }}>
           {professor ? "Modo professor" : `${totalFeitas} de ${aulas.length} aulas feitas`}

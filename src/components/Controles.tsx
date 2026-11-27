@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
-import * as Haptics from "expo-haptics";
 import { Pressable, Text, View } from "react-native";
+import { vibrar } from "../lib/plataforma";
 import { cor, fonte, raio } from "../theme";
 
 export function Botao({ texto, aoTocar, tipo = "principal" }: { texto: string; aoTocar: () => void; tipo?: "principal" | "secundario" }) {
@@ -31,7 +31,7 @@ export function LinhaCheck({ texto, marcado, aoTocar, corMarca = cor.acento }: {
   return (
     <Pressable
       onPress={() => {
-        void Haptics.selectionAsync();
+        vibrar.selecao();
         aoTocar();
       }}
       accessibilityRole="checkbox"

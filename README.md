@@ -46,6 +46,23 @@ eas build -p android --profile preview   # gera um .apk para instalar direto
 eas build -p ios                         # precisa de conta de desenvolvedor Apple
 ```
 
+## Versão para PC (Windows)
+
+A pasta `desktop/` tem a janela do Calo para Windows, feita com Electron: ela abre a versão web do app, com o mesmo conteúdo e o progresso salvo no computador.
+
+- **Baixar pronto:** na página de [Releases](https://github.com/zezegabriel/calo/releases), baixe `Calo-Instalador-*.exe` (instala com atalho no menu Iniciar) ou `Calo-Portatil-*.exe` (abre direto, sem instalar).
+- **Gerar de novo:** rode o workflow **App PC (Windows)** em Actions.
+- **Rodar a partir do código:**
+
+```bash
+npx expo export -p web --output-dir desktop/web
+cd desktop
+npm install
+npm start
+```
+
+O executável não tem assinatura digital, então o Windows SmartScreen avisa na primeira vez: clique em "Mais informações" e depois em "Executar assim mesmo".
+
 ## Estrutura
 
 ```
@@ -54,10 +71,11 @@ src/
   components/     diagrama de acorde, tablatura, batidas, metrônomo, visão do aluno e do professor
   content/        currículo: acordes.ts, ritmos.ts, tipos.ts e aulas/a01.ts a a24.ts
   store/          progresso salvo no aparelho (armazenamento.ts é o único que toca no AsyncStorage)
-  lib/            log.ts (único que usa console) e midia.ts (imagens e sons)
+  lib/            log.ts (único que usa console), midia.ts (imagens e sons) e plataforma.ts (o que muda entre celular e PC)
 assets/
   marca/          ícone, nome e slogan exportados do Canva
   sons/           cliques do metrônomo
+desktop/          janela do Windows (Electron)
 scripts/
   conferir-conteudo.ts   confere acordes, batidas e tempo de cada roteiro
 ```

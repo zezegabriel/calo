@@ -32,7 +32,7 @@ export default function EscolherPerfil() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: cor.azulNoite }}>
-      <View style={{ flex: 1, padding: 24, justifyContent: "center" }}>
+      <View style={{ flex: 1, padding: 24, justifyContent: "center", width: "100%", maxWidth: 520, alignSelf: "center" }}>
         <Image source={marca.icone} style={{ width: 120, height: 120, alignSelf: "center" }} accessibilityIgnoresInvertColors />
         <Image source={marca.nomeClaro} style={{ width: 150, height: 58, alignSelf: "center", marginTop: 18 }} resizeMode="contain" accessibilityLabel="Calo" />
         <Image source={marca.sloganClaro} style={{ width: 200, height: 23, alignSelf: "center", marginTop: 6 }} resizeMode="contain" accessibilityLabel="Seu acorde mais firme" />

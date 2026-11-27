@@ -1,23 +1,21 @@
 import { router } from "expo-router";
-import { Alert, Image, ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, Text, View } from "react-native";
 import { Botao, Segmentado } from "../../components/Controles";
 import { marca } from "../../lib/midia";
+import { confirmar } from "../../lib/plataforma";
 import type { Perfil } from "../../store/armazenamento";
 import { useProgresso } from "../../store/progresso";
-import { cor, fonte } from "../../theme";
+import { cor, fonte, pagina } from "../../theme";
 
 export default function Ajustes() {
   const { perfil, definirPerfil, recomecar } = useProgresso();
 
   function confirmarRecomeco() {
-    Alert.alert("Apagar o progresso?", "As aulas feitas, as marcações e as anotações deste aparelho serão apagadas.", [
-      { text: "Cancelar", style: "cancel" },
-      { text: "Apagar", style: "destructive", onPress: recomecar },
-    ]);
+    confirmar("Apagar o progresso?", "As aulas feitas, as marcações e as anotações deste aparelho serão apagadas.", "Apagar", recomecar);
   }
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 40 }}>
+    <ScrollView contentContainerStyle={pagina}>
       <Text style={{ fontFamily: fonte.titulo, fontSize: 19, color: cor.tinta, marginBottom: 10 }}>Como você usa o app</Text>
       <Segmentado<Perfil>
         opcoes={[{ valor: "aluno", rotulo: "Aluno" }, { valor: "professor", rotulo: "Professor" }]}

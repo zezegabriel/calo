@@ -2,11 +2,11 @@ import { ScrollView, Text, View } from "react-native";
 import { Metronomo } from "../../components/Metronomo";
 import { BatidaView, DedilhadoView } from "../../components/Ritmo";
 import { todasAsBatidas, todosOsDedilhados } from "../../content/ritmos";
-import { cor, fonte } from "../../theme";
+import { cor, fonte, pagina } from "../../theme";
 
 export default function Ritmo() {
   return (
-    <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 40 }}>
+    <ScrollView contentContainerStyle={pagina}>
       <Metronomo />
       <Text style={{ fontFamily: fonte.titulo, fontSize: 19, color: cor.tinta, marginTop: 26 }}>Batidas</Text>
       <Text style={{ fontFamily: fonte.texto, fontSize: 14, lineHeight: 20, color: cor.tintaSuave, marginBottom: 4 }}>

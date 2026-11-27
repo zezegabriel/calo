@@ -1,6 +1,6 @@
-import * as Haptics from "expo-haptics";
 import { Text, View } from "react-native";
 import type { Aula } from "../../content/tipos";
+import { vibrar } from "../../lib/plataforma";
 import { useProgresso } from "../../store/progresso";
 import { cor, fonte, raio } from "../../theme";
 import { BlocoView } from "../BlocoView";
@@ -36,7 +36,7 @@ export function VisaoAluno({ aula }: { aula: Aula }) {
           texto={feita ? "Desmarcar aula" : "Marcar aula como feita"}
           tipo={feita ? "secundario" : "principal"}
           aoTocar={() => {
-            if (!feita) void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+            if (!feita) vibrar.sucesso();
             alternarAulaFeita(aula.id);
           }}
         />

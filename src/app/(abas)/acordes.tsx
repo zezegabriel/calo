@@ -1,7 +1,7 @@
 import { ScrollView, Text, View } from "react-native";
 import { DiagramaAcorde } from "../../components/DiagramaAcorde";
 import { acharAcorde } from "../../content/acordes";
-import { cor, fonte, raio } from "../../theme";
+import { cor, fonte, raio, pagina } from "../../theme";
 
 const GRUPOS: { titulo: string; cifras: string[] }[] = [
   { titulo: "Abertos", cifras: ["C", "D", "E", "G", "A", "Am", "Dm", "Em"] },
@@ -15,7 +15,7 @@ const GRUPOS: { titulo: string; cifras: string[] }[] = [
 
 export default function Acordes() {
   return (
-    <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 40 }}>
+    <ScrollView contentContainerStyle={pagina}>
       <Text style={{ fontFamily: fonte.texto, fontSize: 15, lineHeight: 21, color: cor.tintaSuave }}>
         Corda 6 (grave) à esquerda. Número na bolinha é o dedo; ○ é corda solta e × é corda que não toca.
       </Text>

@@ -7,6 +7,7 @@ App Expo (React Native + TypeScript + expo-router) de aulas de violão popular, 
 - `npx expo start`: abre no Expo Go
 - `npm run typecheck`, `npm run lint`, `npm run lint:typed`, `npm run conferir`: rode os quatro antes de dar uma tarefa como pronta
 - `npx expo export --platform android --platform ios`: confere se o bundle compila
+- APK: workflow `APK Android`; Windows: workflow `App PC (Windows)` (pasta `desktop/`, Electron servindo `desktop/web`)
 
 ## Onde mexer
 
@@ -24,6 +25,8 @@ App Expo (React Native + TypeScript + expo-router) de aulas de violão popular, 
 - Burndown de warnings: correção mecânica pode ser feita direto; mudança de arquitetura, pergunte antes.
 - Visual sem cara de IA (taste-skill): nada de roxo, gradiente, emoji no lugar de ícone, glassmorphism ou animação em toda tela. Um estilo de botão, um de card, raio 8.
 - Textos em português do Brasil, diretos, sem travessão longo, sem exclamação, sem palavras de marketing ("desbloqueie", "jornada", "domine"). Botão = verbo + objeto.
+- Vibração e caixas de confirmação passam por `src/lib/plataforma.ts` (no PC não existe vibração nem `Alert` nativo).
+- Telas usam o estilo `pagina` de `src/theme.ts`, que limita a largura a 760 no PC.
 - Violão popular: sem partitura. Acordes em diagrama, solos em tablatura.
 
 ## Próximos passos possíveis

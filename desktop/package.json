@@ -1,0 +1,36 @@
+{
+  "name": "calo-desktop",
+  "productName": "Calo",
+  "version": "0.1.0",
+  "description": "Calo: aulas de violão popular do zero ao intermediário",
+  "author": "José Gabriel",
+  "license": "MIT",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win --publish never"
+  },
+  "build": {
+    "appId": "br.calo.desktop",
+    "productName": "Calo",
+    "copyright": "José Gabriel",
+    "directories": { "output": "dist", "buildResources": "build" },
+    "files": ["main.cjs", "web/**/*", "build/icon.png"],
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }, { "target": "portable", "arch": ["x64"] }],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "Calo",
+      "artifactName": "Calo-Instalador-${version}.${ext}"
+    },
+    "portable": { "artifactName": "Calo-Portatil-${version}.${ext}" }
+  },
+  "devDependencies": {
+    "electron": "^45.5.0",
+    "electron-builder": "^26.18.0"
+  }
+}

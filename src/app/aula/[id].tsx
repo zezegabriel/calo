@@ -6,7 +6,7 @@ import { VisaoProfessor } from "../../components/aula/VisaoProfessor";
 import { Segmentado } from "../../components/Controles";
 import { acharAula, aulas, modulos } from "../../content/aulas";
 import { useProgresso } from "../../store/progresso";
-import { cor, fonte } from "../../theme";
+import { cor, fonte, pagina } from "../../theme";
 
 type Visao = "roteiro" | "aluno";
 
@@ -27,7 +27,7 @@ export default function TelaAula() {
   return (
     <>
       <Stack.Screen options={{ title: `Aula ${aula.numero}` }} />
-      <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 48 }} keyboardShouldPersistTaps="handled">
+      <ScrollView contentContainerStyle={[pagina, { paddingBottom: 48 }]} keyboardShouldPersistTaps="handled">
         <Text style={{ fontFamily: fonte.textoForte, fontSize: 13, color: cor.acento }}>
           Módulo {aula.modulo}: {modulo?.nome}
         </Text>

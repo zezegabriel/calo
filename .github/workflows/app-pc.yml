@@ -1,0 +1,62 @@
+name: App PC (Windows)
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            desktop/package-lock.json
+
+      - name: Dependências do app
+        run: npm ci
+
+      - name: Conferências
+        run: |
+          npm run typecheck
+          npm run lint
+          npm run conferir
+
+      - name: Versão web do app
+        run: npx expo export -p web --output-dir desktop/web
+        env:
+          CI: "1"
+
+      - name: Dependências da janela
+        working-directory: desktop
+        run: npm ci
+
+      - name: Gerar instalador e versão portátil
+        working-directory: desktop
+        run: npx electron-builder --win --publish never
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Calo-windows
+          path: desktop/dist/Calo-*.exe
+
+      - name: Publicar na Release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'teste' }}"
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --title "Calo $TAG" --notes "Versões de teste do Calo." --prerelease
+          gh release upload "$TAG" desktop/dist/Calo-*.exe --clobber

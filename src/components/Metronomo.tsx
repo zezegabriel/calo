@@ -1,9 +1,9 @@
 import { Ionicons } from "@expo/vector-icons";
 import { setAudioModeAsync, useAudioPlayer } from "expo-audio";
-import * as Haptics from "expo-haptics";
 import { useEffect, useRef, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { sons } from "../lib/midia";
+import { vibrar } from "../lib/plataforma";
 import { cor, fonte, raio } from "../theme";
 
 const MIN = 40;
@@ -35,7 +35,8 @@ export function Metronomo() {
       const som = t === 0 ? forte : fraco;
       void som.seekTo(0);
       som.play();
-      void Haptics.impactAsync(t === 0 ? Haptics.ImpactFeedbackStyle.Medium : Haptics.ImpactFeedbackStyle.Light);
+      if (t === 0) vibrar.forte();
+      else vibrar.leve();
       setTempo(t);
       contagem += 1;
       proximo += intervalo;

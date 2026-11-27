@@ -20,8 +20,12 @@
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "favicon": "./assets/favicon.png",
-      "bundler": "metro"
+      "favicon": "./assets/marca/icone-arredondado.png",
+      "bundler": "metro",
+      "output": "single",
+      "name": "Calo",
+      "themeColor": "#1E2638",
+      "backgroundColor": "#F6EEE2"
     },
     "plugins": [
       "expo-router",
